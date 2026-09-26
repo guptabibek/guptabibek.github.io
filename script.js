@@ -97,3 +97,16 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
     observer.observe(el)
   })
 }
+
+// Project archive filter (buttons are hidden without JS, so every card stays visible)
+const filters = document.querySelector('.filters')
+
+filters?.addEventListener('click', (event) => {
+  const button = event.target.closest('button[data-filter]')
+  if (!button) return
+  const filter = button.dataset.filter
+  filters.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === button)))
+  document.querySelectorAll('.archive-card').forEach((card) => {
+    card.hidden = filter !== 'all' && !card.dataset.cat.split(' ').includes(filter)
+  })
+})
