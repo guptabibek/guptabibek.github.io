@@ -39,8 +39,8 @@ SUMMARY = (
     "7-8 engineers rewriting ERISApedia, an ERISA compliance-research platform now part of Ascensus, from legacy "
     "PHP to .NET Core, Angular, and MySQL on Azure and GCP, and shipping its AI Search (Ask ERISA) and Form 5500 "
     "data mining. Previously Senior Engineer and Team Lead on PensionPro, a SaaS platform used by 400+ "
-    "third-party administrator firms managing 230,000+ U.S. retirement plans. Founder of SastoRent and "
-    "builder of ForecastPro, an AI reporting SaaS in production with retail pharmacy chains in India."
+    "third-party administrator firms managing 230,000+ U.S. retirement plans. Also built ForecastPro, "
+    "an AI reporting SaaS in production with retail pharmacy chains in India."
 )
 
 SKILLS = [
@@ -153,9 +153,9 @@ PROJECTS = [
         "charging, per-tenant pricing and spend limits, and signature-verified, idempotent Stripe webhooks.",
         "Built a resumable ERP data sync pipeline with queue-based, per-tenant worker concurrency.",
     ]),
-    ("SastoRent - Founder & Lead Engineer", "sastorent.com", [
-        "Building a marketplace where people rent out properties and everyday items, and where service providers "
-        "such as plumbers, carpenters, and tutors register and sell their services.",
+    ("SastoRent - Rental and services marketplace", "Freelance, lead engineer", [
+        "Built a marketplace (sastorent.com) where people rent out properties and everyday items, and where "
+        "service providers such as plumbers, carpenters, and tutors register and sell their services.",
     ]),
     ("LearnSphere - Multi-tenant learning management system", "Lead engineer", [
         "SAML and OpenID Connect SSO, Stripe payments, queue-based exports, Redis caching, attendance and "
