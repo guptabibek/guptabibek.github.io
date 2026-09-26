@@ -36,8 +36,9 @@ CONTACT = [
 SUMMARY = (
     "Senior Software Engineer and Technical Lead with 8+ years building production SaaS, ERP, and "
     "enterprise systems in C#, .NET Core, SQL Server, and Microsoft Azure. Currently leading a team of "
-    "7-8 engineers rewriting ERISApedia (Ascensus) from legacy PHP to .NET Core, Angular, and MySQL on "
-    "Azure and GCP. Previously Senior Engineer and Team Lead on PensionPro, a SaaS platform used by 400+ "
+    "7-8 engineers rewriting ERISApedia, an ERISA compliance-research platform now part of Ascensus, from legacy "
+    "PHP to .NET Core, Angular, and MySQL on Azure and GCP, and shipping its AI Search (Ask ERISA) and Form 5500 "
+    "data mining. Previously Senior Engineer and Team Lead on PensionPro, a SaaS platform used by 400+ "
     "third-party administrator firms managing 230,000+ U.S. retirement plans. Founder of SastoRent and "
     "builder of multi-tenant SaaS products, including an AI natural-language reporting (NLQ) engine and "
     "a prepaid AI credit billing platform."
@@ -55,7 +56,7 @@ SKILLS = [
     ("Frontend", "Angular, React, Next.js, TypeScript, Tailwind CSS, PrimeNG, Ag-Grid"),
     ("Security & Integrations", "SAML 2.0 SSO, OAuth 2.0 / OpenID Connect, JWT, AES encryption, Stripe, DocuSign, "
                                 "QuickBooks Online, Braintree, Zendesk, Google Sheets & Drive APIs"),
-    ("AI & Data", "LLM integration (OpenAI-compatible APIs), natural language to SQL (NLQ), semantic layer design, "
+    ("AI & Data", "LLM integration (OpenAI-compatible APIs), LLM-powered search, natural language to SQL (NLQ), semantic layer design, "
                   "token metering, time-series forecasting"),
     ("Testing", "Unit and integration testing, Jest, Vitest, Playwright"),
     ("Leadership", "Team leadership, code review, design review, coding standards, mentoring, "
@@ -66,14 +67,18 @@ SKILLS = [
 EXPERIENCE = [
     {
         "title": "Technical Lead / Senior Software Engineer",
-        "company": "DolphinDive Technology (client: Ascensus, USA) | Kathmandu, Nepal",
+        "company": "DolphinDive Technology (client: AmericanTCS, acquired by Ascensus in 2026) | Kathmandu, Nepal",
         "dates": "Jun 2022 - Present",
-        "intro": "Engineering team for U.S. retirement-industry SaaS products under Ascensus, "
-                 "the largest U.S. retirement plan administration firm.",
+        "intro": "Engineering team for U.S. retirement-industry SaaS products (PensionPro, ERISApedia), now part of "
+                 "Ascensus, which serves 16M+ savers and $930B+ in assets under administration.",
         "groups": [
             ("ERISApedia - Team Lead", "Nov 2025 - Present", [
                 "Lead a team of 7-8 engineers on the ground-up rewrite of ERISApedia, an ERISA compliance-research "
                 "platform, replacing a legacy PHP application with .NET Core, Angular, and MySQL.",
+                "Team delivered AI Search (Ask ERISA), launched July 2026: LLM-powered answers across nine ERISA "
+                "compliance book titles for advisors, auditors, and TPAs.",
+                "Team built Form 5500 data mining: search across filings and attachments with hundreds of criteria, "
+                "benchmarking, and map-based sales prospecting.",
                 "Own the target architecture, technology selection, and migration path off the legacy system; "
                 "designed the cloud architecture across Microsoft Azure and Google Cloud Platform.",
                 "Partner with U.S. stakeholders and engineers on architecture, scope, and sequencing to keep the "
