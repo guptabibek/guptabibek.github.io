@@ -40,8 +40,7 @@ SUMMARY = (
     "PHP to .NET Core, Angular, and MySQL on Azure and GCP, and shipping its AI Search (Ask ERISA) and Form 5500 "
     "data mining. Previously Senior Engineer and Team Lead on PensionPro, a SaaS platform used by 400+ "
     "third-party administrator firms managing 230,000+ U.S. retirement plans. Founder of SastoRent and "
-    "builder of multi-tenant SaaS products, including an AI natural-language reporting (NLQ) engine and "
-    "a prepaid AI credit billing platform."
+    "builder of ForecastPro, an AI reporting SaaS in production with retail pharmacy chains in India."
 )
 
 SKILLS = [
@@ -103,13 +102,13 @@ EXPERIENCE = [
         ],
     },
     {
-        "title": "Senior Software Engineer (Part-Time)",
+        "title": "Senior Software Engineer (Freelance Consultant)",
         "company": "Bharuwa Solutions (India)",
         "dates": "Jun 2022 - Jun 2025",
         "intro": "Enterprise software products: ERP, fintech, distribution, and agritech platforms.",
         "bullets": [
-            "Architected QueryGen, an ASP.NET Core query-generation engine with per-client database routing that "
-            "eliminated hand-written SQL for routine analyst reporting.",
+            "Architected QueryGen, a domain-driven ASP.NET Core engine used in production that generates dynamic "
+            "queries and reports with per-client database routing, eliminating hand-written SQL for routine reporting.",
             "Re-engineered ERP accounting, payroll, and invoicing modules for multi-tenant operation, letting one "
             "deployment serve multiple client organizations with isolated data.",
             "Automated GST reporting and filing against the government e-portal, replacing a manual compliance process.",
@@ -142,11 +141,9 @@ EXPERIENCE = [
 ]
 
 PROJECTS = [
-    ("SastoRent - Founder & Lead Engineer", "sastorent.com", [
-        "Building a marketplace where people rent out properties and everyday items, and where service providers "
-        "such as plumbers, carpenters, and tutors register and sell their services.",
-    ]),
-    ("ForecastPro - Multi-tenant forecasting & ERP analytics SaaS", "Sole engineer", [
+    ("ForecastPro - Multi-tenant forecasting & AI reporting SaaS", "Sole engineer, in production", [
+        "In production with a few large retail pharmacy chains in India: syncs their ERP data, forecasts demand, "
+        "and answers business questions asked in plain English.",
         "Built a natural-language reporting (NLQ) engine: an LLM maps questions to a catalog-constrained semantic "
         "query that is compiled to parameterized SQL with tenant and branch row-level security and SQL safety "
         "checks, so the model never writes SQL.",
@@ -156,14 +153,13 @@ PROJECTS = [
         "charging, per-tenant pricing and spend limits, and signature-verified, idempotent Stripe webhooks.",
         "Built a resumable ERP data sync pipeline with queue-based, per-tenant worker concurrency.",
     ]),
+    ("SastoRent - Founder & Lead Engineer", "sastorent.com", [
+        "Building a marketplace where people rent out properties and everyday items, and where service providers "
+        "such as plumbers, carpenters, and tutors register and sell their services.",
+    ]),
     ("LearnSphere - Multi-tenant learning management system", "Lead engineer", [
         "SAML and OpenID Connect SSO, Stripe payments, queue-based exports, Redis caching, attendance and "
         "marksheets, and Prometheus metrics across 112 database tables; deployed with Docker.",
-    ]),
-    ("Marg ERP to Google Sheets Sync - .NET 8 Windows Service", "Freelance", [
-        "Syncs stock data for N branches from an encrypted ERP API into Google Sheets on a schedule "
-        "(ASP.NET Core Razor Pages, EF Core, SQLite, Quartz.NET, Polly), with parallel runs, retry of failed "
-        "branches only, and secrets encrypted at rest.",
     ]),
     ("DriveNow and Futsal Booking - Booking platforms", "Freelance", [
         "Car rental and futsal court booking platforms with online payments, availability checks that prevent "
