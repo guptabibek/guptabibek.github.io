@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f2ed" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1114" media="(prefers-color-scheme: dark)">
+  <title>ForecastPro case study — Bibek Gupta</title>
+  <meta name="description" content="How Bibek Gupta designed and built ForecastPro, a multi-tenant forecasting and AI reporting SaaS in production with retail pharmacy chains in India.">
+  <meta name="author" content="Bibek Gupta">
+  <link rel="canonical" href="https://guptabibek.github.io/work/forecastpro/">
+  <meta property="og:title" content="ForecastPro case study — Bibek Gupta">
+  <meta property="og:description" content="Giving pharmacy chains the analysis their ERP couldn’t: a resumable ERP sync, growth and degrowth analysis, and plain-English reporting where the LLM never writes SQL.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://guptabibek.github.io/work/forecastpro/">
+  <meta property="og:image" content="https://guptabibek.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bibek Gupta — Technical Lead. I lead .NET teams that modernize regulated SaaS.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/apple-icon.png">
+  <link rel="preload" href="../../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../styles.css">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="../../" aria-label="Bibek Gupta, home"><span>BG</span><strong>Bibek Gupta</strong></a>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="../../#work">Work</a><a href="../../#leadership">Leadership</a><a href="../../#experience">Experience</a><a href="../../#building">Building</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
+      <a class="nav-action" href="#contact">Let’s talk</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="case">
+      <header class="case-hero grid-bg" id="top">
+        <a class="back" href="../../#work"><span aria-hidden="true">←</span> All work</a>
+        <p class="eyebrow">Case study · ForecastPro</p>
+        <h1>Giving pharmacy chains the analysis their ERP couldn’t.</h1>
+        <p class="case-lede">ForecastPro sits on top of Marg ERP and turns its sales, purchase and stock data into reports, forecasts and plain-English answers. It is in production with a few large retail pharmacy chains in India. I designed and built it end to end.</p>
+        <dl class="case-facts">
+          <div><dt>Role</dt><dd>Product builder and sole engineer</dd></div>
+          <div><dt>Clients</dt><dd>A few large retail pharmacy chains in India</dd></div>
+          <div><dt>Status</dt><dd>In production</dd></div>
+          <div><dt>Built with</dt><dd>PostgreSQL, Redis, job queues, LLM APIs, Stripe, Docker</dd></div>
+        </dl>
+      </header>
+
+      <figure class="case-shot">
+        <img src="../../assets/projects/forecastpro.webp" srcset="../../assets/projects/forecastpro-960.webp 960w, ../../assets/projects/forecastpro.webp 1600w" sizes="(max-width: 1240px) 92vw, 1100px" alt="ForecastPro forecast dashboard with total runs, success rate, total forecasts, the mix of forecasting models used and recent runs" width="1600" height="900" decoding="async">
+        <figcaption>The forecast dashboard: runs, success rate, and the mix of models behind each forecast. Demo tenant data.</figcaption>
+      </figure>
+
+      <div class="case-body">
+        <section aria-labelledby="problem-title">
+          <h2 id="problem-title">The problem</h2>
+          <p>The chains run their business on Marg ERP. It records every sale, purchase and stock movement, but it wasn’t built for analysis: there is no way to ask questions in plain English, and little help comparing periods across the ways a pharmacy business actually slices its data.</p>
+          <p>Their teams wanted to see, every month, where sales and purchases were growing or shrinking, and why: by salesman, supplier, company, product group, salt, product, route and area.</p>
+        </section>
+
+        <section aria-labelledby="built-title">
+          <h2 id="built-title">What I built</h2>
+          <ul class="case-list">
+            <li><b>ERP sync.</b> A resumable pipeline that pulls encrypted data from Marg, stages it, and builds stock and accounting ledgers from it.</li>
+            <li><b>Growth and degrowth analysis.</b> Month-on-month sales and purchase comparisons across nine dimensions, with drill-downs from route to city, party, product and bill.</li>
+            <li><b>Forecasting.</b> Ten models, from moving averages and Holt-Winters to a weighted ensemble, each with a plain-language note on when to trust it.</li>
+            <li><b>Plain-English reporting.</b> Ask a question and get a chart, table or KPI, with the same permissions as the rest of the app.</li>
+            <li><b>AI insights.</b> Twelve checks that flag stock-out risk, customer churn, dead stock and discount anomalies, and score overall business health.</li>
+            <li><b>Operations.</b> Expiry management, reorder suggestions, procurement, 360° reports, and PDF export and sharing.</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="decisions-title">
+          <h2 id="decisions-title">Four decisions that shaped it</h2>
+
+          <div class="decision">
+            <p class="decision-index">Decision 1</p>
+            <h3>Make the ERP sync resumable, not just retryable.</h3>
+            <dl>
+              <div><dt>Constraint</dt><dd>A first backfill for a large client runs to about a million records. Marg sends them as encrypted pages of up to about 50 MB, and each page expands several times once decoded. A single failure late in a run used to mean starting again.</dd></div>
+              <div><dt>Decision</dt><dd>Save every raw page, compressed and hash-checked, before processing it. Then move through explicit stages, each checkpointed, so a failed run resumes from the saved pages instead of fetching from Marg again. Each tenant gets one sync slot, so one client’s backfill can’t starve the others.</dd></div>
+              <div><dt>Trade-off</dt><dd>More storage and more moving parts. Worth it: a late failure now resumes from saved pages instead of forcing a full re-run.</dd></div>
+            </dl>
+          </div>
+          <figure class="case-figure">
+            <div class="project-diagram" role="img" aria-label="Diagram: Marg ERP sends encrypted pages. Each page is saved to a compressed, hash-checked raw page store, which is the resume point. The pipeline then runs checkpointed stages: staging, master data, inventory projection and accounting projection. The results feed reports and drill-downs, forecasts, and plain-English reporting and insights.">
+              <div class="diagram" aria-hidden="true">
+                <p class="diagram-caption"><span>Fig. 01</span>ERP sync pipeline · simplified</p>
+                <div class="node"><b>Marg ERP</b><small>Encrypted pages, up to ~50 MB each</small></div>
+                <div class="flow"><span>Fetch &amp; decrypt</span></div>
+                <div class="node node-accent"><b>Raw page store</b><small>Compressed · hash-checked · resume point</small></div>
+                <div class="flow"><span>Process</span></div>
+                <div class="node-group">
+                  <p>Checkpointed stages</p>
+                  <div class="layers">
+                    <div><b>Staging</b><small>Raw rows</small></div>
+                    <div><b>Master data</b><small>Products, salts, parties, salesmen</small></div>
+                    <div><b>Inventory projection</b><small>Stock levels, batches, ledger</small></div>
+                    <div><b>Accounting projection</b><small>Journal entries</small></div>
+                  </div>
+                </div>
+                <div class="flow"><span>Feeds</span></div>
+                <div class="node-row node-row-3">
+                  <div class="node"><b>Reports</b><small>Drill-downs</small></div>
+                  <div class="node"><b>Forecasts</b><small>10 models</small></div>
+                  <div class="node"><b>NLQ &amp; insights</b><small>Plain English</small></div>
+                </div>
+              </div>
+            </div>
+          </figure>
+
+          <div class="decision">
+            <p class="decision-index">Decision 2</p>
+            <h3>Let the LLM choose what to ask, never how to query.</h3>
+            <dl>
+              <div><dt>Constraint</dt><dd>SQL written by a model can be wrong, slow, or show one branch’s data to another. None of that is acceptable for financial reports.</dd></div>
+              <div><dt>Decision</dt><dd>The model only fills in a semantic query: dataset, metrics, dimensions, filters and dates, picked from a fixed catalog. My code validates it, compiles it to parameterized SQL on curated views, adds the tenant, company and branch filters, runs a safety check, executes it with a timeout and masks sensitive columns. Deterministic repairs catch the model’s common slips, such as a missing date or a “top 5 routes” question that forgot to group by route.</dd></div>
+              <div><dt>Trade-off</dt><dd>It can only answer what the catalog describes, so new kinds of questions mean extending the catalog. In return, every answer is safe, repeatable and auditable.</dd></div>
+            </dl>
+          </div>
+          <figure class="case-figure">
+            <div class="project-diagram" role="img" aria-label="Diagram: a question goes to the LLM, which returns a semantic query. The query is validated against the catalog and the user's permissions, compiled to parameterized SQL with row filters, safety-checked, then run and masked. The result comes back as a chart, table or KPI.">
+              <div class="diagram" aria-hidden="true">
+                <p class="diagram-caption"><span>Fig. 02</span>Plain-English reporting · simplified</p>
+                <div class="node"><b>“Which suppliers fell most vs last month?”</b><small>User question</small></div>
+                <div class="flow"><span>LLM</span></div>
+                <div class="node node-accent"><b>Semantic query</b><small>Dataset · metrics · dimensions · filters · dates</small></div>
+                <div class="flow"><span>My code, not the model</span></div>
+                <div class="node-group">
+                  <p>Deterministic pipeline</p>
+                  <div class="layers">
+                    <div><b>Validate</b><small>Catalog + permissions</small></div>
+                    <div><b>Compile</b><small>Parameterized SQL + row filters</small></div>
+                    <div><b>Safety check</b><small>Defense in depth</small></div>
+                    <div><b>Run &amp; mask</b><small>Timeout · sensitive columns</small></div>
+                  </div>
+                </div>
+                <div class="flow"><span>Returns</span></div>
+                <div class="node"><b>Chart · table · KPI</b><small>Pin it to a dashboard; it re-runs with the viewer’s permissions</small></div>
+              </div>
+            </div>
+          </figure>
+
+          <div class="decision">
+            <p class="decision-index">Decision 3</p>
+            <h3>Rank by change, not by value.</h3>
+            <dl>
+              <div><dt>Constraint</dt><dd>The question the chains cared about most was about change: which products, suppliers or areas fell compared with last month. Two period totals side by side don’t answer that.</dd></div>
+              <div><dt>Decision</dt><dd>A dedicated comparison path totals both periods for each dimension value and joins them so items that disappeared or newly appeared still show up. It then ranks by the signed change. A degrowth view lists only the decliners across every dimension at once, with a minimum-drop filter, and each row drills down to the parties and bills that moved it.</dd></div>
+              <div><dt>Trade-off</dt><dd>A separate query path to maintain alongside regular reports. It is also the part the clients praised most.</dd></div>
+            </dl>
+          </div>
+          <figure class="case-figure">
+            <table class="change-table">
+              <caption>How a degrowth view ranks rows. Illustrative data, not client figures.</caption>
+              <thead><tr><th scope="col">Product group</th><th scope="col">Last month</th><th scope="col">This month</th><th scope="col">Change</th><th scope="col">Change %</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Group B</th><td>180,000</td><td>0</td><td class="down">−180,000</td><td class="down">−100%</td></tr>
+                <tr><th scope="row">Group A</th><td>420,000</td><td>310,000</td><td class="down">−110,000</td><td class="down">−26.2%</td></tr>
+                <tr><th scope="row">Group C</th><td>250,000</td><td>230,000</td><td class="down">−20,000</td><td class="down">−8.0%</td></tr>
+              </tbody>
+            </table>
+            <figcaption>Rows are ranked by change. Group B stopped selling entirely, so a report that only listed this month’s totals would have dropped it.</figcaption>
+          </figure>
+
+          <div class="decision">
+            <p class="decision-index">Decision 4</p>
+            <h3>Treat AI usage like money, because it is.</h3>
+            <dl>
+              <div><dt>Constraint</dt><dd>Every LLM call costs real money, and it has to be traced to the tenant that made it.</dd></div>
+              <div><dt>Decision</dt><dd>Prepaid credits on an append-only ledger that database triggers keep from being edited. Credits are reserved before each call and settled on the actual tokens used. Stripe payments credit a wallet only through a verified, idempotent webhook, and tenants can bring their own API key instead.</dd></div>
+              <div><dt>Trade-off</dt><dd>More work than a flat plan. In return, every charge traces back to a ledger row.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section aria-labelledby="result-title">
+          <h2 id="result-title">The result</h2>
+          <p>ForecastPro is in production with a few large retail pharmacy chains in India, running on top of the ERP they already use.</p>
+          <blockquote class="case-quote">
+            <p>They were impressed by how clearly the data is presented and visualised, and most of all by the monthly sales and purchase analysis: growth and degrowth by each dimension, and the analysis behind it.</p>
+            <p class="quote-source">Client feedback, paraphrased</p>
+          </blockquote>
+        </section>
+
+        <section aria-labelledby="next-title">
+          <h2 id="next-title">What I’d do next</h2>
+          <ul class="case-list">
+            <li>One bounded retry when the model returns an invalid query, feeding the validation error back to it.</li>
+            <li>Each tenant’s local time for every date boundary, instead of server time.</li>
+            <li>End-to-end tests for pinning an answer and refreshing it on a seeded database.</li>
+          </ul>
+        </section>
+
+        <nav class="case-next" aria-label="More">
+          <a class="button button-primary" href="mailto:guptabibek166@gmail.com">Email me about a role</a>
+          <a class="button button-quiet" href="../../#work">Back to all work</a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-lead">
+      <p class="eyebrow">Contact</p>
+      <h2>Hiring a technical lead? Let’s talk.</h2>
+      <p>Open to technical lead and senior engineering roles, especially on enterprise platforms, backend architecture and legacy modernization.</p>
+      <a class="footer-email" href="mailto:guptabibek166@gmail.com">guptabibek166@gmail.com <span aria-hidden="true">↗</span></a>
+    </div>
+    <address>
+      <a href="tel:+9779845910191"><span>Phone</span>+977 9845910191</a>
+      <a href="https://linkedin.com/in/itsmebibek" target="_blank" rel="noreferrer"><span>LinkedIn</span>linkedin.com/in/itsmebibek</a>
+      <a href="https://github.com/guptabibek" target="_blank" rel="noreferrer"><span>GitHub</span>github.com/guptabibek</a>
+      <p><span>Based in</span>Kathmandu, Nepal</p>
+    </address>
+    <div class="footer-bottom"><p>© <span id="year">2026</span> Bibek Gupta</p><a href="../../assets/Bibek-Gupta-Resume.pdf" download>Résumé PDF ↓</a><a href="../../assets/Bibek-Gupta-Resume.docx" download>Résumé DOCX ↓</a><a href="#top">Back to top ↑</a></div>
+  </footer>
+</body>
+</html>
