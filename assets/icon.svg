@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#15171a"/>
+  <text x="90" y="112" fill="#fbfaf7" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="78" font-weight="800" letter-spacing="-2" text-anchor="middle">BG</text>
+  <rect x="48" y="132" width="84" height="8" fill="#b84c2f"/>
+</svg>
