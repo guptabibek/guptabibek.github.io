@@ -81,6 +81,8 @@ EXPERIENCE = [
                 "benchmarking, and map-based sales prospecting.",
                 "Own the target architecture, technology selection, and migration path off the legacy system; "
                 "designed the cloud architecture across Microsoft Azure and Google Cloud Platform.",
+                "Made the new platform faster than the legacy PHP system by rewriting UI components, optimizing "
+                "slow SQL queries, and adding API-layer caching.",
                 "Partner with U.S. stakeholders and engineers on architecture, scope, and sequencing to keep the "
                 "rewrite aligned with product and compliance requirements.",
             ]),
@@ -93,8 +95,9 @@ EXPERIENCE = [
                 "Integrated DocuSign, Zendesk, ftwilliam.com, QuickBooks Online, and Braintree; implemented SAML 2.0 "
                 "single sign-on and identity management.",
                 "Established the CI/CD and release strategy on Azure DevOps: build and release pipelines, environment "
-                "promotion, and deployment gates.",
-                "As Team Lead, set code review, design review, and coding standards and mentored engineers; served as "
+                "promotion, and deployment gates, supporting production releases every 2 to 4 weeks.",
+                "As Team Lead, set code review, design review, and coding standards and mentored up to 4 engineers "
+                "plus QA at a time; served as "
                 "primary engineering liaison translating pension-compliance requirements into technical designs.",
             ]),
         ],
