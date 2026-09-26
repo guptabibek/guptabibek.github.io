@@ -22,56 +22,33 @@ themeToggle?.addEventListener('click', () => {
 prefersDark.addEventListener?.('change', syncThemeToggle)
 syncThemeToggle()
 
+// Mobile menu: links collapse behind a Menu button on small screens.
+const header = document.querySelector('.site-header')
+const menuToggle = document.querySelector('.menu-toggle')
+const siteNav = document.getElementById('site-nav')
+const setMenu = (open) => {
+  header?.classList.toggle('menu-open', open)
+  menuToggle?.setAttribute('aria-expanded', String(open))
+  if (menuToggle) menuToggle.textContent = open ? 'Close' : 'Menu'
+}
+
+menuToggle?.addEventListener('click', () => setMenu(!header.classList.contains('menu-open')))
+siteNav?.addEventListener('click', (event) => { if (event.target.closest('a')) setMenu(false) })
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && header?.classList.contains('menu-open')) {
+    setMenu(false)
+    menuToggle?.focus()
+  }
+})
+
 // Live Kathmandu clock
 const clock = document.getElementById('ktm-time')
 
 if (clock) {
   const format = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit' })
-  const tick = () => { clock.textContent = format.format(new Date()) }
+  const tick = () => { clock.textContent = `${format.format(new Date())} local time · UTC+5:45` }
   tick()
   setInterval(tick, 15000)
-}
-
-// Career chart: position bars on a 2018 → next-January axis
-const career = document.querySelector('.career')
-
-if (career) {
-  const now = new Date()
-  const startYear = 2018
-  const endYear = now.getFullYear() + 1
-  const totalMonths = (endYear - startYear) * 12
-  const monthIndex = (value) => {
-    if (value === 'present') return (now.getFullYear() - startYear) * 12 + now.getMonth() + 1
-    const [y, m] = value.split('-').map(Number)
-    return (y - startYear) * 12 + m - 1
-  }
-
-  career.style.setProperty('--years', endYear - startYear)
-  career.querySelectorAll('.bar').forEach((bar) => {
-    const start = monthIndex(bar.dataset.start)
-    const end = bar.dataset.end === 'present' ? monthIndex('present') : monthIndex(bar.dataset.end) + 1
-    bar.style.left = `${(start / totalMonths) * 100}%`
-    bar.style.width = `${((end - start) / totalMonths) * 100}%`
-  })
-
-  const axis = career.querySelector('.career-axis')
-  for (let y = startYear; y < endYear; y++) {
-    const label = document.createElement('span')
-    label.textContent = y
-    axis?.append(label)
-  }
-}
-
-// Count-up for impact numbers
-const countUp = (el) => {
-  const target = Number(el.dataset.count)
-  const started = performance.now()
-  const step = (time) => {
-    const progress = Math.min((time - started) / 1400, 1)
-    el.textContent = Math.round(target * (1 - Math.pow(1 - progress, 3)))
-    if (progress < 1) requestAnimationFrame(step)
-  }
-  requestAnimationFrame(step)
 }
 
 // Scroll reveal (hero animates on load via CSS)
@@ -80,33 +57,19 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
     entries.forEach(({ isIntersecting, target }) => {
       if (!isIntersecting) return
       target.classList.add('is-visible')
-      target.querySelectorAll('[data-count]').forEach(countUp)
       observer.unobserve(target)
       setTimeout(() => {
         target.classList.remove('reveal-pending', 'is-visible')
         target.style.transitionDelay = ''
-      }, 1800)
+      }, 1600)
     })
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
 
   document.querySelectorAll('.reveal').forEach((el) => {
     if (el.closest('.hero')) return
     const index = [...el.parentElement.children].indexOf(el)
-    el.style.transitionDelay = `${(index % 4) * 80}ms`
+    el.style.transitionDelay = `${(index % 4) * 70}ms`
     el.classList.add('reveal-pending')
     observer.observe(el)
   })
 }
-
-// Project archive filter (buttons are hidden without JS, so every card stays visible)
-const filters = document.querySelector('.filters')
-
-filters?.addEventListener('click', (event) => {
-  const button = event.target.closest('button[data-filter]')
-  if (!button) return
-  const filter = button.dataset.filter
-  filters.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === button)))
-  document.querySelectorAll('.archive-card').forEach((card) => {
-    card.hidden = filter !== 'all' && !card.dataset.cat.split(' ').includes(filter)
-  })
-})
