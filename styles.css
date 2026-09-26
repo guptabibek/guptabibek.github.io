@@ -118,6 +118,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .tags span { padding: .3rem .5rem; border: 1px solid var(--line); background: var(--canvas); font-family: var(--mono); font-size: .68rem; }
 .project-copy small { margin-top: auto; padding-top: 1.5rem; color: color-mix(in srgb, var(--ink) 58%, transparent); }
+.project-copy li b { font-weight: 700; }
+.project-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; }
+.project-links a { color: var(--blue); font-size: .8rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+.nlq { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; margin: 0 0 1.25rem; font-family: var(--mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .04em; }
+.nlq span { padding: .3rem .45rem; border: 1px solid var(--blue); color: var(--blue); }
+.nlq span + span::before { content: "→"; margin: 0 .35rem 0 -.1rem; color: color-mix(in srgb, var(--ink) 50%, transparent); }
+.node-row.node-row-3 { grid-template-columns: repeat(3, 1fr); }
 
 /* Architecture diagrams */
 .project-diagram { display: flex; color: var(--on-dark); background-color: var(--deep); background-image: linear-gradient(to right, color-mix(in srgb, var(--on-dark) 6%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, var(--on-dark) 6%, transparent) 1px, transparent 1px); background-size: 24px 24px; }
@@ -152,7 +159,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .archive { --paper: var(--on-dark); --blue: var(--signal); display: grid; grid-template-columns: .72fr 1.28fr; gap: 4rem; padding: 7rem max(1.25rem, calc((100vw - var(--max))/2)); background: var(--deep); color: var(--paper); }
 .archive-intro { position: sticky; top: 110px; align-self: start; }
 .archive-intro h2 { margin-top: 1rem; }
-.archive-intro > p:last-child { color: color-mix(in srgb, var(--paper) 68%, transparent); }
+.archive-intro > p:last-of-type { max-width: 670px; margin-top: 1.5rem; color: color-mix(in srgb, var(--paper) 68%, transparent); font-size: 1.05rem; }
+.filters { display: none; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
+.js .filters { display: flex; }
+.filters button { padding: .5rem .8rem; border: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); background: transparent; color: var(--paper); font: inherit; font-size: .74rem; font-weight: 700; letter-spacing: .04em; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+.filters button:hover { border-color: var(--blue); }
+.filters button[aria-pressed="true"] { border-color: var(--blue); background: color-mix(in srgb, var(--blue) 24%, transparent); }
+.filters button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .archive-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); border-left: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); }
 .archive-card { min-height: 245px; padding: 1.5rem; border-right: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); transition: background .2s ease; }
 .archive-card:hover { background: color-mix(in srgb, var(--blue) 18%, transparent); }
@@ -160,6 +173,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .archive-card h3 { margin-top: 2.3rem; font-family: Georgia, serif; font-size: 1.65rem; font-weight: 400; }
 .archive-card p { min-height: 68px; margin-top: .7rem; color: color-mix(in srgb, var(--paper) 68%, transparent); font-size: .88rem; }
 .archive-card .tags span { border-color: color-mix(in srgb, var(--paper) 22%, transparent); background: transparent; }
+.archive-card[hidden] { display: none; }
+.archive-card .card-link { display: inline-block; margin-top: 1rem; color: var(--blue); font-family: var(--mono); font-size: .72rem; }
+.archive-card .card-link:hover { text-decoration: underline; }
 
 /* Career chart */
 .career { display: none; margin: 0 0 4rem; padding: 1.75rem 2rem; border: 1px solid var(--line); background: var(--paper); }
@@ -272,6 +288,7 @@ footer address span { margin-bottom: .4rem; color: color-mix(in srgb, var(--pape
   .career-axis span { padding-left: .15rem; }
   .archive-grid, footer address { grid-template-columns: 1fr; }
   .archive-card { min-height: 210px; }
+  .node-row.node-row-3 { grid-template-columns: 1fr; gap: .5rem; }
   footer address > * { border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); }
   .footer-bottom { flex-direction: column; }
 }
