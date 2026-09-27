@@ -68,7 +68,7 @@
       <header class="section-head reveal"><p class="eyebrow">Selected work</p><h2 id="work-title">Three systems, three kinds of ownership.</h2><p>Two U.S. platforms I lead and build at DolphinDive Technology, both now part of Ascensus, and a product of my own that’s in production.</p></header>
 
       <article class="work reveal" aria-labelledby="erisapedia-title">
-        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: the legacy core PHP application is rewritten as a new platform built on Angular, .NET Core, and MySQL, running across Microsoft Azure and Google Cloud Platform, and powering AI Search (Ask ERISA) and Form 5500 data mining.">
+        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: the legacy core PHP application is rewritten as a new platform built on Angular, .NET Core, and MySQL, with Redis caching, running across Microsoft Azure and Google Cloud Platform (Cloud Run, Cloud Tasks, Cloud Storage, BigQuery), and powering AI Search (Ask ERISA) and Form 5500 and DOL data mining.">
           <div class="diagram" aria-hidden="true">
             <p class="diagram-caption"><span>Fig. 01</span>Migration path · simplified</p>
             <div class="node node-legacy"><b>Legacy core PHP application</b><small>Being replaced</small></div>
@@ -77,19 +77,19 @@
               <p>New platform</p>
               <div class="layers">
                 <div><b>Angular</b><small>Web client</small></div>
-                <div><b>.NET Core</b><small>APIs &amp; services</small></div>
-                <div><b>MySQL</b><small>Data</small></div>
+                <div><b>.NET Core · EF Core</b><small>APIs &amp; services</small></div>
+                <div><b>MySQL · Redis</b><small>Data &amp; distributed cache</small></div>
               </div>
             </div>
             <div class="flow"><span>Runs across</span></div>
             <div class="node-row">
-              <div class="node"><b>Microsoft Azure</b></div>
-              <div class="node"><b>Google Cloud Platform</b></div>
+              <div class="node"><b>Microsoft Azure</b><small>App services · Azure Functions</small></div>
+              <div class="node"><b>Google Cloud Platform</b><small>Cloud Run · Cloud Tasks · Storage · BigQuery</small></div>
             </div>
             <div class="flow"><span>Powers</span></div>
             <div class="node-row">
               <div class="node node-accent"><b>AI Search · Ask ERISA</b><small>LLM answers · 9 compliance titles</small></div>
-              <div class="node node-accent"><b>Form 5500 data mining</b><small>Hundreds of criteria · maps</small></div>
+              <div class="node node-accent"><b>Form 5500 &amp; DOL data</b><small>Scraped · mined · searchable</small></div>
             </div>
           </div>
         </div>
@@ -99,15 +99,15 @@
           <p class="work-sub">ERISA compliance research, rebuilt from legacy PHP</p>
           <dl class="facts">
             <div><dt>Context</dt><dd>A research platform for ERISA advisors, auditors and TPAs, now part of Ascensus, running on a legacy PHP codebase.</dd></div>
-            <div><dt>My role</dt><dd>Lead 7–8 engineers. Own the architecture, technology choices and the migration to .NET Core, Angular and MySQL on Azure and GCP.</dd></div>
-            <div><dt>Delivered</dt><dd><ul><li>AI Search (Ask ERISA), launched July 2026: LLM answers drawn from nine ERISA compliance books.</li><li>Form 5500 data mining: search filings on hundreds of criteria, with benchmarking and maps.</li><li>A faster platform than the legacy one, through component rewrites, query tuning and API caching.</li></ul></dd></div>
+            <div><dt>My role</dt><dd>Lead 7–8 engineers. Own the architecture, technology choices and the migration to .NET Core, EF Core, Angular and MySQL on Azure and GCP.</dd></div>
+            <div><dt>Delivered</dt><dd><ul><li>AI Search (Ask ERISA), launched July 2026: LLM answers drawn from nine ERISA compliance books.</li><li>Form 5500 and DOL data pipelines: scraping and mining public filings with Cloud Run functions, Cloud Tasks, Cloud Storage and BigQuery, searchable on hundreds of criteria with benchmarking and maps.</li><li>A faster platform than the legacy one, through component rewrites, query tuning and Redis distributed caching.</li></ul></dd></div>
           </dl>
-          <div class="tags"><span>.NET Core</span><span>Angular</span><span>MySQL</span><span>Azure</span><span>GCP</span><span>LLM search</span></div>
+          <div class="tags"><span>.NET Core</span><span>EF Core</span><span>Angular</span><span>MySQL</span><span>Redis</span><span>Azure Functions</span><span>Cloud Run</span><span>BigQuery</span><span>LLM search</span></div>
         </div>
       </article>
 
       <article class="work work-reverse reveal" aria-labelledby="pensionpro-title">
-        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: 400+ TPA firms use an Angular web app with SAML SSO and identity, backed by .NET Core REST APIs on SQL Server and Redis. Background work is handed off through Azure Service Bus and Storage Queues to Azure Functions and Logic Apps. The platform integrates DocuSign, Zendesk, ftwilliam.com, QuickBooks Online, and Braintree, and ships through Azure DevOps pipelines.">
+        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: 400+ TPA firms use an Angular web app with SAML SSO and identity, backed by .NET Core REST APIs on SQL Server with read-only replicas, a search database, Elasticsearch and Redis caching. Background work is handed off through Azure Service Bus and Storage Queues to Azure Functions and Logic Apps. The platform integrates ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online, and Braintree, and ships through Azure DevOps pipelines.">
           <div class="diagram" aria-hidden="true">
             <p class="diagram-caption"><span>Fig. 02</span>Request path vs. background path · simplified</p>
             <div class="node"><b>400+ TPA firms</b><small>Angular web app · SAML SSO &amp; identity</small></div>
@@ -118,12 +118,12 @@
               <div class="node" style="grid-area:bus"><b>Service Bus · Storage Queues</b><small>Async hand-off</small></div>
               <div class="flow" style="grid-area:d1"></div>
               <div class="flow" style="grid-area:d2"></div>
-              <div class="node" style="grid-area:db"><b>SQL Server · Redis</b><small>Data &amp; cache</small></div>
+              <div class="node" style="grid-area:db"><b>SQL Server + read replicas</b><small>Search DB · Elasticsearch · Redis cache</small></div>
               <div class="node" style="grid-area:work"><b>Azure Functions · Logic Apps</b><small>All trigger types · workflows</small></div>
               <p class="lane-label" style="grid-area:l1"><b>Request path</b>Fast, user-facing</p>
               <p class="lane-label" style="grid-area:l2"><b>Background path</b>Scales on its own</p>
             </div>
-            <div class="pipeline"><b>Integrations</b><i>DocuSign</i><i>Zendesk</i><i>ftwilliam.com</i><i>QuickBooks Online</i><i>Braintree</i></div>
+            <div class="pipeline"><b>Integrations</b><i>ERISApedia</i><i>ftwilliam.com</i><i>DocuSign</i><i>Form 5500</i><i>Zendesk</i><i>QuickBooks Online</i><i>Braintree</i></div>
             <div class="pipeline"><b>Azure DevOps</b><i>Build</i>→<i>Release</i>→<i>Promote</i>→<i>Gate</i></div>
           </div>
         </div>
@@ -132,11 +132,11 @@
           <h3 id="pensionpro-title">PensionPro</h3>
           <p class="work-sub">Pension administration SaaS used by 400+ TPA firms</p>
           <dl class="facts">
-            <div><dt>Context</dt><dd>Workflow software for 400+ third-party administrator firms managing 230,000+ U.S. retirement plans, now part of Ascensus.</dd></div>
+            <div><dt>Context</dt><dd>Workflow software for 400+ third-party administrator firms managing 230,000+ U.S. retirement plans, now part of Ascensus. The platform also includes the companion apps Fetch and PlanSponsorLinks.</dd></div>
             <div><dt>My role</dt><dd>Senior engineer across the full stack, then Team Lead for two years.</dd></div>
-            <div><dt>Delivered</dt><dd><ul><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps.</li><li>Integrated DocuSign, Zendesk, ftwilliam.com, QuickBooks Online and Braintree, and built SAML single sign-on.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
+            <div><dt>Delivered</dt><dd><ul><li>A read path built for scale: Redis distributed caching, read-only database replicas, a search-only database and Elasticsearch.</li><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps, and built SAML single sign-on.</li><li>Integrations with ERISApedia, ftwilliam.com, DocuSign and Form 5500 data, plus Zendesk, QuickBooks Online and Braintree.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
           </dl>
-          <div class="tags"><span>.NET Core</span><span>Angular</span><span>SQL Server</span><span>Redis</span><span>Azure Functions</span><span>Service Bus</span></div>
+          <div class="tags"><span>.NET Core</span><span>Angular</span><span>SQL Server</span><span>Elasticsearch</span><span>Redis</span><span>Azure Functions</span><span>Logic Apps</span><span>SAML</span></div>
         </div>
       </article>
 
