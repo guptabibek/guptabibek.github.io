@@ -49,7 +49,7 @@ SKILLS = [
                 "Express, REST APIs, YARP API gateway, WebSockets, SignalR, background jobs (Quartz.NET, BullMQ)"),
     ("Architecture", "System design, Clean Architecture, microservices, event-driven architecture, serverless, "
                      "multi-tenant SaaS, legacy modernization, API gateways, distributed locking (Redlock), API design, RBAC, high availability"),
-    ("Cloud & DevOps", "Microsoft Azure (Functions, Logic Apps, Service Bus, Event Grid, App Service, Storage, "
+    ("Cloud & DevOps", "Microsoft Azure (Functions, Logic Apps, Service Bus, Queue Storage, Table Storage, Event Grid, App Service, "
                        "Azure AD), Google Cloud Platform (Cloud Run functions, Cloud Tasks, Cloud Storage, BigQuery), Docker, Azure DevOps, GitHub Actions, CI/CD, Linux, Nginx"),
     ("Databases", "SQL Server, PostgreSQL, MySQL, Redis, Elasticsearch, BigQuery, read replicas, query optimization"),
     ("Frontend", "Angular, React, Next.js, TypeScript, Tailwind CSS, PrimeNG, Ag-Grid"),
@@ -91,13 +91,13 @@ EXPERIENCE = [
                 "Worked on a read path built for scale: Redis distributed caching, read-only database replicas, a "
                 "search-only database, and Elasticsearch.",
                 "Moved long-running and integration-heavy work off the request path using Azure Service Bus, Storage "
-                "queues and tables, Azure Functions (all trigger types), Logic Apps, and Event Grid, so background "
+                "queues and Table Storage, Azure Functions (all trigger types), Logic Apps, and Event Grid, so background "
                 "processing scales independently of user traffic.",
                 "Integrated ERISApedia, ftwilliam.com, DocuSign, and Form 5500 data, plus Zendesk, QuickBooks Online, and "
                 "Braintree; implemented SAML 2.0 "
                 "single sign-on and identity management.",
-                "Established the CI/CD and release strategy on Azure DevOps: build and release pipelines, environment "
-                "promotion, and deployment gates, supporting production releases every 2 to 4 weeks.",
+                "Built and maintained Azure DevOps build (CI) pipelines, working with the DevOps team that owns release "
+                "pipelines on a 2 to 4 week production release cadence.",
                 "As Team Lead, set code review, design review, and coding standards and mentored up to 4 engineers "
                 "plus QA at a time; served as "
                 "primary engineering liaison translating pension-compliance requirements into technical designs.",
