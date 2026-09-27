@@ -107,34 +107,50 @@
       </article>
 
       <article class="work work-stack reveal" aria-labelledby="pensionpro-title">
-        <div class="work-media project-diagram arch" role="img" aria-label="PensionPro platform architecture. Web SaaS users of the PensionPro Angular web app, used by 400+ TPA firms, sign in with SAML single sign-on or a normal login with MFA; the companion apps Fetch and PlanSponsorLinks use the same PensionPro APIs. Third-party API consumers go through a separate YARP API gateway that handles their authentication and rate limits using Redis distributed locks (Redlock), mutexes and semaphores. Application: .NET Core REST APIs shared by the web app, Fetch and PlanSponsorLinks, external API services behind the gateway, async hand-off through Azure Service Bus, Storage queues and tables and Event Grid, and background processing on Azure Functions and Logic Apps. Data: a SQL Server primary for writes, read-only replicas for reads, a search-only database with Elasticsearch, and Redis for distributed caching and locks. Integrations: ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online and Braintree. Delivery through Azure DevOps pipelines.">
+        <div class="work-media project-diagram arch" role="img" aria-label="PensionPro platform architecture, two entry paths. Web SaaS path: the PensionPro Angular web app used by 400+ TPA firms and the companion apps Fetch and PlanSponsorLinks sign in with SAML SSO or a login with MFA, then call the shared .NET Core REST APIs. Third-party path: API consumers call a YARP API gateway, which works with rate limiting built on Redis distributed locks (Redlock), mutexes and semaphores, and forwards to the external API services. Both the REST APIs and the external API services read and write shared data and hand long-running work to async hand-off (Service Bus, Storage queues and tables, Event Grid), which background processing on Azure Functions and Logic Apps picks up. Shared data, used by both services and background processing: SQL Server primary for writes, read-only replicas, a search database with Elasticsearch, and Redis for cache and locks. Integrations: ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online and Braintree. Delivery through Azure DevOps pipelines.">
           <div class="diagram" aria-hidden="true">
             <p class="diagram-caption"><span>Fig. 02</span>PensionPro platform architecture · overview</p>
-            <div class="arch-layer"><p class="arch-label">Web SaaS</p><div class="arch-nodes">
-              <div class="node"><b>PensionPro web app</b><small>Angular · 400+ TPA firms</small></div>
-              <div class="node"><b>Sign-in</b><small>SAML SSO · login · MFA</small></div>
-              <div class="node"><b>Fetch</b><small>Companion app · same APIs</small></div>
-              <div class="node"><b>PlanSponsorLinks</b><small>Companion app · same APIs</small></div>
-            </div></div>
-            <div class="arch-layer"><p class="arch-label">Third-party APIs</p><div class="arch-nodes">
-              <div class="node"><b>API consumers</b><small>Third-party integrators</small></div>
-              <div class="node node-accent"><b>YARP API gateway</b><small>Routing · auth · rate limits</small></div>
-              <div class="node"><b>Rate limiting</b><small>Redlock · mutexes · semaphores</small></div>
-            </div></div>
-            <div class="flow"></div>
-            <div class="arch-layer"><p class="arch-label">Application</p><div class="arch-nodes">
-              <div class="node node-accent"><b>.NET Core REST APIs</b><small>Web app, Fetch &amp; PlanSponsorLinks · C# · EF Core</small></div>
-              <div class="node"><b>External API services</b><small>Behind the gateway</small></div>
+            <div class="lanes2">
+              <div class="lane">
+                <p class="arch-label">Web SaaS</p>
+                <div class="lane-row">
+                  <div class="node"><b>PensionPro web app</b><small>Angular · 400+ TPA firms</small></div>
+                  <div class="node"><b>Fetch</b><small>Companion app</small></div>
+                  <div class="node"><b>PlanSponsorLinks</b><small>Companion app</small></div>
+                </div>
+                <div class="flow"></div>
+                <div class="node"><b>Sign-in</b><small>SAML SSO · login · MFA</small></div>
+                <div class="flow"></div>
+                <div class="node node-accent"><b>.NET Core REST APIs</b><small>Shared by web app, Fetch &amp; PlanSponsorLinks · C# · EF Core</small></div>
+              </div>
+              <div class="lane">
+                <p class="arch-label">Third-party APIs</p>
+                <div class="node"><b>API consumers</b><small>Third-party integrators</small></div>
+                <div class="flow"></div>
+                <div class="gate-row">
+                  <div class="node node-accent"><b>YARP API gateway</b><small>Routing · auth</small></div>
+                  <div class="flow-x"></div>
+                  <div class="node"><b>Rate limiting</b><small>Redis · Redlock · mutexes · semaphores</small></div>
+                </div>
+                <div class="flow"></div>
+                <div class="node node-accent"><b>External API services</b><small>Behind the gateway</small></div>
+              </div>
+            </div>
+            <div class="merge" aria-hidden="true"><span></span><span></span></div>
+            <p class="arch-label merge-label">Both services read &amp; write shared data and hand off long-running work</p>
+            <div class="async-row">
               <div class="node"><b>Async hand-off</b><small>Service Bus · Storage queues &amp; tables · Event Grid</small></div>
+              <div class="flow-x"></div>
               <div class="node"><b>Background processing</b><small>Azure Functions (all triggers) · Logic Apps</small></div>
-            </div></div>
-            <div class="flow"></div>
-            <div class="arch-layer"><p class="arch-label">Data</p><div class="arch-nodes">
+            </div>
+            <div class="flow"><span>Reads &amp; writes</span></div>
+            <p class="arch-label">Shared data · used by both services and background processing</p>
+            <div class="arch-nodes">
               <div class="node"><b>SQL Server primary</b><small>Writes</small></div>
               <div class="node"><b>Read-only replicas</b><small>Read traffic</small></div>
               <div class="node"><b>Search DB · Elasticsearch</b><small>Search</small></div>
               <div class="node"><b>Redis</b><small>Distributed cache &amp; locks</small></div>
-            </div></div>
+            </div>
             <div class="pipeline"><b>Integrations</b><i>ERISApedia</i><i>ftwilliam.com</i><i>DocuSign</i><i>Form 5500</i><i>Zendesk</i><i>QuickBooks Online</i><i>Braintree</i></div>
             <div class="pipeline"><b>Azure DevOps</b><i>Build</i>→<i>Release</i>→<i>Promote</i>→<i>Gate</i></div>
           </div>

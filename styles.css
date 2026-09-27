@@ -148,11 +148,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .work-stack .work-copy { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: 3rem; }
 .work-stack .facts { margin-top: 0; }
 .arch .diagram { gap: 0; }
-.arch-layer { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; align-items: start; }
 .arch-label { padding-top: .8rem; color: var(--signal); font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
-.arch-layer + .arch-layer { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(246, 245, 240, .16); }
+.lanes2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.lane { display: flex; flex-direction: column; padding: 1rem; border: 1px dashed rgba(246, 245, 240, .2); }
+.lane .arch-label { padding-top: 0; margin-bottom: .75rem; }
+.lane-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+.gate-row { display: grid; grid-template-columns: minmax(0, 1fr) 2rem minmax(0, 1fr); align-items: center; }
+.merge { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; height: 28px; }
+.merge span { position: relative; }
+.merge span::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: repeating-linear-gradient(to bottom, var(--signal) 0 5px, transparent 5px 10px); }
+.merge-label, .arch-label + .arch-nodes { margin-top: 0; }
+.merge-label { margin-bottom: .6rem; padding-top: 0; text-align: center; }
+.async-row { display: grid; grid-template-columns: minmax(0, 1fr) 2.5rem minmax(0, 1fr); align-items: center; }
+.arch .arch-nodes { margin-top: .6rem; }
+.arch .flow span { left: 16px; }
 .arch-nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .6rem; }
-.arch .flow { margin-left: calc(8.5rem + 1rem + 40px); }
 .work-meta { color: var(--muted); font-size: .88rem; font-weight: 500; }
 .work-copy h3 { margin-top: .5rem; font-family: var(--serif); font-size: clamp(2rem, 3.2vw, 2.8rem); font-weight: 400; line-height: 1.05; letter-spacing: -.015em; }
 .work-sub { margin-top: .45rem; font-weight: 600; }
@@ -338,10 +348,13 @@ footer address span { color: var(--on-deep-muted); font-size: .75rem; font-weigh
   .node, .layers > div { padding: .6rem .7rem; }
   .node b, .layers b { font-size: .85rem; }
   .lanes { grid-template-columns: 1fr 1.75rem 1fr; }
-  .arch-layer { grid-template-columns: 1fr; gap: .4rem; }
-  .arch-label { padding-top: 0; }
+  .lanes2, .merge { grid-template-columns: 1fr; gap: 1rem; }
+  .merge span:last-child { display: none; }
+  .lane-row { grid-template-columns: 1fr; }
+  .gate-row, .async-row { grid-template-columns: 1fr; }
+  .gate-row .flow-x, .async-row .flow-x { width: 2px; height: 22px; margin: .3rem auto; background: repeating-linear-gradient(to bottom, var(--signal) 0 5px, transparent 5px 10px); }
+  .gate-row .flow-x::after, .async-row .flow-x::after { display: none; }
   .arch-nodes { grid-template-columns: 1fr 1fr; }
-  .arch .flow { margin-left: auto; }
   .node-row.node-row-3 { grid-template-columns: 1fr; gap: .5rem; }
   .lead-grid { grid-template-columns: 1fr; }
   .lead-grid article { padding: 1.4rem 1.25rem; }
