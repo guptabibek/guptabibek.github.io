@@ -107,24 +107,24 @@
       </article>
 
       <article class="work work-stack reveal" aria-labelledby="pensionpro-title">
-        <div class="work-media project-diagram arch" role="img" aria-label="PensionPro platform architecture. Clients: the PensionPro Angular web app used by 400+ TPA firms, the companion apps Fetch and PlanSponsorLinks, and external API projects. Edge: a YARP API gateway handles routing, authentication and rate limits using Redis distributed locks (Redlock), mutexes and semaphores, alongside SAML single sign-on. Application: .NET Core REST APIs hand long-running work to Azure Service Bus, Storage queues and tables and Event Grid, processed by Azure Functions and Logic Apps. Data: a SQL Server primary for writes, read-only replicas for reads, a search-only database with Elasticsearch, and Redis for distributed caching and locks. Integrations: ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online and Braintree. Delivery through Azure DevOps pipelines.">
+        <div class="work-media project-diagram arch" role="img" aria-label="PensionPro platform architecture. Web SaaS users of the PensionPro Angular web app, used by 400+ TPA firms, sign in with SAML single sign-on or a normal login with MFA; the companion apps Fetch and PlanSponsorLinks sit alongside it. Third-party API consumers go through a separate YARP API gateway that handles their authentication and rate limits using Redis distributed locks (Redlock), mutexes and semaphores. Application: .NET Core REST APIs for the web app, external API services behind the gateway, async hand-off through Azure Service Bus, Storage queues and tables and Event Grid, and background processing on Azure Functions and Logic Apps. Data: a SQL Server primary for writes, read-only replicas for reads, a search-only database with Elasticsearch, and Redis for distributed caching and locks. Integrations: ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online and Braintree. Delivery through Azure DevOps pipelines.">
           <div class="diagram" aria-hidden="true">
             <p class="diagram-caption"><span>Fig. 02</span>PensionPro platform architecture · overview</p>
-            <div class="arch-layer"><p class="arch-label">Clients</p><div class="arch-nodes">
+            <div class="arch-layer"><p class="arch-label">Web SaaS</p><div class="arch-nodes">
               <div class="node"><b>PensionPro web app</b><small>Angular · 400+ TPA firms</small></div>
+              <div class="node"><b>Sign-in</b><small>SAML SSO · login · MFA</small></div>
               <div class="node"><b>Fetch</b><small>Companion app</small></div>
               <div class="node"><b>PlanSponsorLinks</b><small>Companion app</small></div>
-              <div class="node"><b>External API projects</b><small>Partner &amp; client integrations</small></div>
             </div></div>
-            <div class="flow"></div>
-            <div class="arch-layer"><p class="arch-label">Edge &amp; identity</p><div class="arch-nodes">
+            <div class="arch-layer"><p class="arch-label">Third-party APIs</p><div class="arch-nodes">
+              <div class="node"><b>API consumers</b><small>Third-party integrators</small></div>
               <div class="node node-accent"><b>YARP API gateway</b><small>Routing · auth · rate limits</small></div>
               <div class="node"><b>Rate limiting</b><small>Redlock · mutexes · semaphores</small></div>
-              <div class="node"><b>SAML SSO</b><small>Identity &amp; sign-on</small></div>
             </div></div>
             <div class="flow"></div>
             <div class="arch-layer"><p class="arch-label">Application</p><div class="arch-nodes">
-              <div class="node node-accent"><b>.NET Core REST APIs</b><small>C# · EF Core · request path</small></div>
+              <div class="node node-accent"><b>.NET Core REST APIs</b><small>Web app backend · C# · EF Core</small></div>
+              <div class="node"><b>External API services</b><small>Behind the gateway</small></div>
               <div class="node"><b>Async hand-off</b><small>Service Bus · Storage queues &amp; tables · Event Grid</small></div>
               <div class="node"><b>Background processing</b><small>Azure Functions (all triggers) · Logic Apps</small></div>
             </div></div>
@@ -149,7 +149,7 @@
           <dl class="facts">
             <div><dt>Context</dt><dd>Workflow software for 400+ third-party administrator firms managing 230,000+ U.S. retirement plans, now part of Ascensus. The platform also includes the companion apps Fetch and PlanSponsorLinks.</dd></div>
             <div><dt>My role</dt><dd>Senior engineer across the full stack and a major contributor to the platform’s .NET Core architecture, then Team Lead for two years.</dd></div>
-            <div><dt>Delivered</dt><dd><ul><li>Designed and architected an API gateway on YARP for the platform’s external APIs, handling authentication and rate limits with Redis distributed locks (Redlock), mutexes and semaphores.</li><li>A read path built for scale: Redis distributed caching, read-only database replicas, a search-only database and Elasticsearch.</li><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps, and built SAML single sign-on.</li><li>Integrations with ERISApedia, ftwilliam.com, DocuSign and Form 5500 data, plus Zendesk, QuickBooks Online and Braintree.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
+            <div><dt>Delivered</dt><dd><ul><li>Designed and architected a YARP API gateway for third-party consumers of the platform’s external APIs, handling their authentication and rate limits with Redis distributed locks (Redlock), mutexes and semaphores.</li><li>A read path built for scale: Redis distributed caching, read-only database replicas, a search-only database and Elasticsearch.</li><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps, and built SAML single sign-on.</li><li>Integrations with ERISApedia, ftwilliam.com, DocuSign and Form 5500 data, plus Zendesk, QuickBooks Online and Braintree.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
           </dl>
           <div class="tags"><span>.NET Core</span><span>Angular</span><span>SQL Server</span><span>Elasticsearch</span><span>Redis</span><span>Azure Functions</span><span>Logic Apps</span><span>SAML</span><span>YARP</span></div>
           </div>
