@@ -106,38 +106,53 @@
         </div>
       </article>
 
-      <article class="work work-reverse reveal" aria-labelledby="pensionpro-title">
-        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: 400+ TPA firms use an Angular web app with SAML SSO and identity, backed by .NET Core REST APIs on SQL Server with read-only replicas, a search database, Elasticsearch and Redis caching. Background work is handed off through Azure Service Bus and Storage Queues to Azure Functions and Logic Apps. External APIs go through a YARP gateway that handles authentication and rate limits. The platform integrates ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online, and Braintree, and ships through Azure DevOps pipelines.">
+      <article class="work work-stack reveal" aria-labelledby="pensionpro-title">
+        <div class="work-media project-diagram arch" role="img" aria-label="PensionPro platform architecture. Clients: the PensionPro Angular web app used by 400+ TPA firms, the companion apps Fetch and PlanSponsorLinks, and external API projects. Edge: a YARP API gateway handles routing, authentication and rate limits using Redis distributed locks (Redlock), mutexes and semaphores, alongside SAML single sign-on. Application: .NET Core REST APIs hand long-running work to Azure Service Bus, Storage queues and tables and Event Grid, processed by Azure Functions and Logic Apps. Data: a SQL Server primary for writes, read-only replicas for reads, a search-only database with Elasticsearch, and Redis for distributed caching and locks. Integrations: ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online and Braintree. Delivery through Azure DevOps pipelines.">
           <div class="diagram" aria-hidden="true">
-            <p class="diagram-caption"><span>Fig. 02</span>Request path vs. background path · simplified</p>
-            <div class="node"><b>400+ TPA firms</b><small>Angular web app · SAML SSO &amp; identity</small></div>
-            <div class="lanes">
-              <div class="flow" style="grid-area:in"></div>
-              <div class="node node-accent" style="grid-area:api"><b>REST APIs</b><small>.NET Core · C#</small></div>
-              <div class="flow-x" style="grid-area:hand"></div>
-              <div class="node" style="grid-area:bus"><b>Service Bus · Storage Queues</b><small>Async hand-off</small></div>
-              <div class="flow" style="grid-area:d1"></div>
-              <div class="flow" style="grid-area:d2"></div>
-              <div class="node" style="grid-area:db"><b>SQL Server + read replicas</b><small>Search DB · Elasticsearch · Redis cache</small></div>
-              <div class="node" style="grid-area:work"><b>Azure Functions · Logic Apps</b><small>All trigger types · workflows</small></div>
-              <p class="lane-label" style="grid-area:l1"><b>Request path</b>Fast, user-facing</p>
-              <p class="lane-label" style="grid-area:l2"><b>Background path</b>Scales on its own</p>
-            </div>
-            <div class="pipeline"><b>External APIs</b><i>YARP gateway</i>→<i>Auth</i>→<i>Rate limits · Redlock</i></div>
+            <p class="diagram-caption"><span>Fig. 02</span>PensionPro platform architecture · overview</p>
+            <div class="arch-layer"><p class="arch-label">Clients</p><div class="arch-nodes">
+              <div class="node"><b>PensionPro web app</b><small>Angular · 400+ TPA firms</small></div>
+              <div class="node"><b>Fetch</b><small>Companion app</small></div>
+              <div class="node"><b>PlanSponsorLinks</b><small>Companion app</small></div>
+              <div class="node"><b>External API projects</b><small>Partner &amp; client integrations</small></div>
+            </div></div>
+            <div class="flow"></div>
+            <div class="arch-layer"><p class="arch-label">Edge &amp; identity</p><div class="arch-nodes">
+              <div class="node node-accent"><b>YARP API gateway</b><small>Routing · auth · rate limits</small></div>
+              <div class="node"><b>Rate limiting</b><small>Redlock · mutexes · semaphores</small></div>
+              <div class="node"><b>SAML SSO</b><small>Identity &amp; sign-on</small></div>
+            </div></div>
+            <div class="flow"></div>
+            <div class="arch-layer"><p class="arch-label">Application</p><div class="arch-nodes">
+              <div class="node node-accent"><b>.NET Core REST APIs</b><small>C# · EF Core · request path</small></div>
+              <div class="node"><b>Async hand-off</b><small>Service Bus · Storage queues &amp; tables · Event Grid</small></div>
+              <div class="node"><b>Background processing</b><small>Azure Functions (all triggers) · Logic Apps</small></div>
+            </div></div>
+            <div class="flow"></div>
+            <div class="arch-layer"><p class="arch-label">Data</p><div class="arch-nodes">
+              <div class="node"><b>SQL Server primary</b><small>Writes</small></div>
+              <div class="node"><b>Read-only replicas</b><small>Read traffic</small></div>
+              <div class="node"><b>Search DB · Elasticsearch</b><small>Search</small></div>
+              <div class="node"><b>Redis</b><small>Distributed cache &amp; locks</small></div>
+            </div></div>
             <div class="pipeline"><b>Integrations</b><i>ERISApedia</i><i>ftwilliam.com</i><i>DocuSign</i><i>Form 5500</i><i>Zendesk</i><i>QuickBooks Online</i><i>Braintree</i></div>
             <div class="pipeline"><b>Azure DevOps</b><i>Build</i>→<i>Release</i>→<i>Promote</i>→<i>Gate</i></div>
           </div>
         </div>
         <div class="work-copy">
+          <div class="work-intro">
           <p class="work-meta">Senior Engineer → Team Lead · Jun 2022 – Nov 2025</p>
           <h3 id="pensionpro-title">PensionPro</h3>
           <p class="work-sub">Pension administration SaaS used by 400+ TPA firms</p>
+          </div>
+          <div class="work-detail">
           <dl class="facts">
             <div><dt>Context</dt><dd>Workflow software for 400+ third-party administrator firms managing 230,000+ U.S. retirement plans, now part of Ascensus. The platform also includes the companion apps Fetch and PlanSponsorLinks.</dd></div>
             <div><dt>My role</dt><dd>Senior engineer across the full stack and a major contributor to the platform’s .NET Core architecture, then Team Lead for two years.</dd></div>
             <div><dt>Delivered</dt><dd><ul><li>Designed and architected an API gateway on YARP for the platform’s external APIs, handling authentication and rate limits with Redis distributed locks (Redlock), mutexes and semaphores.</li><li>A read path built for scale: Redis distributed caching, read-only database replicas, a search-only database and Elasticsearch.</li><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps, and built SAML single sign-on.</li><li>Integrations with ERISApedia, ftwilliam.com, DocuSign and Form 5500 data, plus Zendesk, QuickBooks Online and Braintree.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
           </dl>
           <div class="tags"><span>.NET Core</span><span>Angular</span><span>SQL Server</span><span>Elasticsearch</span><span>Redis</span><span>Azure Functions</span><span>Logic Apps</span><span>SAML</span><span>YARP</span></div>
+          </div>
         </div>
       </article>
 
