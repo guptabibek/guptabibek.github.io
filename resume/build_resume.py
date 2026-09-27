@@ -46,9 +46,9 @@ SUMMARY = (
 SKILLS = [
     ("Languages", "C#, TypeScript, JavaScript, SQL, PHP"),
     ("Backend", ".NET 8, .NET Core, ASP.NET Core Web API, Entity Framework Core, Dapper, Node.js, NestJS, "
-                "Express, REST APIs, WebSockets, SignalR, background jobs (Quartz.NET, BullMQ)"),
+                "Express, REST APIs, YARP API gateway, WebSockets, SignalR, background jobs (Quartz.NET, BullMQ)"),
     ("Architecture", "System design, Clean Architecture, microservices, event-driven architecture, serverless, "
-                     "multi-tenant SaaS, legacy modernization, API design, RBAC, high availability"),
+                     "multi-tenant SaaS, legacy modernization, API gateways, distributed locking (Redlock), API design, RBAC, high availability"),
     ("Cloud & DevOps", "Microsoft Azure (Functions, Logic Apps, Service Bus, Event Grid, App Service, Storage, "
                        "Azure AD), Google Cloud Platform (Cloud Run functions, Cloud Tasks, Cloud Storage, BigQuery), Docker, Azure DevOps, GitHub Actions, CI/CD, Linux, Nginx"),
     ("Databases", "SQL Server, PostgreSQL, MySQL, Redis, Elasticsearch, BigQuery, read replicas, query optimization"),
@@ -84,9 +84,10 @@ EXPERIENCE = [
                 "slow SQL queries, and adding Redis distributed caching at the API layer.",
             ]),
             ("PensionPro - Senior Software Engineer, then Team Lead (2 years)", "Jun 2022 - Nov 2025", [
-                "Delivered features across the full stack (C#, .NET Core, Angular, SQL Server) of a pension administration "
-                "SaaS used by 400+ TPA firms administering 230,000+ retirement plans, and its companion apps Fetch and "
-                "PlanSponsorLinks.",
+                "Major contributor to the .NET Core architecture of a pension administration SaaS used by 400+ TPA "
+                "firms administering 230,000+ retirement plans, and its companion apps Fetch and PlanSponsorLinks.",
+                "Designed and architected a YARP-based API gateway for the platform's external APIs, handling "
+                "authentication and rate limiting with Redis distributed locks (Redlock), mutexes, and semaphores.",
                 "Worked on a read path built for scale: Redis distributed caching, read-only database replicas, a "
                 "search-only database, and Elasticsearch.",
                 "Moved long-running and integration-heavy work off the request path using Azure Service Bus, Storage "

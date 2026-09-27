@@ -107,7 +107,7 @@
       </article>
 
       <article class="work work-reverse reveal" aria-labelledby="pensionpro-title">
-        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: 400+ TPA firms use an Angular web app with SAML SSO and identity, backed by .NET Core REST APIs on SQL Server with read-only replicas, a search database, Elasticsearch and Redis caching. Background work is handed off through Azure Service Bus and Storage Queues to Azure Functions and Logic Apps. The platform integrates ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online, and Braintree, and ships through Azure DevOps pipelines.">
+        <div class="work-media project-diagram" role="img" aria-label="Simplified diagram: 400+ TPA firms use an Angular web app with SAML SSO and identity, backed by .NET Core REST APIs on SQL Server with read-only replicas, a search database, Elasticsearch and Redis caching. Background work is handed off through Azure Service Bus and Storage Queues to Azure Functions and Logic Apps. External APIs go through a YARP gateway that handles authentication and rate limits. The platform integrates ERISApedia, ftwilliam.com, DocuSign, Form 5500 data, Zendesk, QuickBooks Online, and Braintree, and ships through Azure DevOps pipelines.">
           <div class="diagram" aria-hidden="true">
             <p class="diagram-caption"><span>Fig. 02</span>Request path vs. background path · simplified</p>
             <div class="node"><b>400+ TPA firms</b><small>Angular web app · SAML SSO &amp; identity</small></div>
@@ -123,6 +123,7 @@
               <p class="lane-label" style="grid-area:l1"><b>Request path</b>Fast, user-facing</p>
               <p class="lane-label" style="grid-area:l2"><b>Background path</b>Scales on its own</p>
             </div>
+            <div class="pipeline"><b>External APIs</b><i>YARP gateway</i>→<i>Auth</i>→<i>Rate limits · Redlock</i></div>
             <div class="pipeline"><b>Integrations</b><i>ERISApedia</i><i>ftwilliam.com</i><i>DocuSign</i><i>Form 5500</i><i>Zendesk</i><i>QuickBooks Online</i><i>Braintree</i></div>
             <div class="pipeline"><b>Azure DevOps</b><i>Build</i>→<i>Release</i>→<i>Promote</i>→<i>Gate</i></div>
           </div>
@@ -133,10 +134,10 @@
           <p class="work-sub">Pension administration SaaS used by 400+ TPA firms</p>
           <dl class="facts">
             <div><dt>Context</dt><dd>Workflow software for 400+ third-party administrator firms managing 230,000+ U.S. retirement plans, now part of Ascensus. The platform also includes the companion apps Fetch and PlanSponsorLinks.</dd></div>
-            <div><dt>My role</dt><dd>Senior engineer across the full stack, then Team Lead for two years.</dd></div>
-            <div><dt>Delivered</dt><dd><ul><li>A read path built for scale: Redis distributed caching, read-only database replicas, a search-only database and Elasticsearch.</li><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps, and built SAML single sign-on.</li><li>Integrations with ERISApedia, ftwilliam.com, DocuSign and Form 5500 data, plus Zendesk, QuickBooks Online and Braintree.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
+            <div><dt>My role</dt><dd>Senior engineer across the full stack and a major contributor to the platform’s .NET Core architecture, then Team Lead for two years.</dd></div>
+            <div><dt>Delivered</dt><dd><ul><li>Designed and architected an API gateway on YARP for the platform’s external APIs, handling authentication and rate limits with Redis distributed locks (Redlock), mutexes and semaphores.</li><li>A read path built for scale: Redis distributed caching, read-only database replicas, a search-only database and Elasticsearch.</li><li>Moved long-running work off the request path with Service Bus, Azure Functions and Logic Apps, and built SAML single sign-on.</li><li>Integrations with ERISApedia, ftwilliam.com, DocuSign and Form 5500 data, plus Zendesk, QuickBooks Online and Braintree.</li><li>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</li></ul></dd></div>
           </dl>
-          <div class="tags"><span>.NET Core</span><span>Angular</span><span>SQL Server</span><span>Elasticsearch</span><span>Redis</span><span>Azure Functions</span><span>Logic Apps</span><span>SAML</span></div>
+          <div class="tags"><span>.NET Core</span><span>Angular</span><span>SQL Server</span><span>Elasticsearch</span><span>Redis</span><span>Azure Functions</span><span>Logic Apps</span><span>SAML</span><span>YARP</span></div>
         </div>
       </article>
 
@@ -166,7 +167,7 @@
       <header class="section-head reveal"><p class="eyebrow">Leadership</p><h2 id="lead-title">How I run an engineering team.</h2></header>
       <div class="lead-grid">
         <article class="reveal"><h3>Lead the team</h3><p>7–8 engineers on the ERISApedia rewrite today, after two years as Team Lead on PensionPro.</p></article>
-        <article class="reveal"><h3>Own the architecture</h3><p>Target architecture, technology choices and migration paths, from legacy PHP to .NET on Azure and GCP.</p></article>
+        <article class="reveal"><h3>Own the architecture</h3><p>Target architecture, technology choices and migration paths, from legacy PHP to .NET on Azure and GCP, and a major share of PensionPro’s .NET Core architecture.</p></article>
         <article class="reveal"><h3>Set the bar</h3><p>Code review, design review and coding standards the whole team works to.</p></article>
         <article class="reveal"><h3>Grow people</h3><p>Mentor up to four engineers, plus QA, at a time.</p></article>
         <article class="reveal"><h3>Ship on a rhythm</h3><p>CI/CD on Azure DevOps with environment promotion and deployment gates, releasing every 2–4 weeks.</p></article>
