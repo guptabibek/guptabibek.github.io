@@ -150,6 +150,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .arch .diagram { gap: 0; }
 .arch-layer { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; align-items: start; }
 .arch-label { padding-top: .8rem; color: var(--signal); font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+.arch-layer + .arch-layer { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(246, 245, 240, .16); }
 .arch-nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .6rem; }
 .arch .flow { margin-left: calc(8.5rem + 1rem + 40px); }
 .work-meta { color: var(--muted); font-size: .88rem; font-weight: 500; }

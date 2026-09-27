@@ -86,8 +86,8 @@ EXPERIENCE = [
             ("PensionPro - Senior Software Engineer, then Team Lead (2 years)", "Jun 2022 - Nov 2025", [
                 "Major contributor to the .NET Core architecture of a pension administration SaaS used by 400+ TPA "
                 "firms administering 230,000+ retirement plans, and its companion apps Fetch and PlanSponsorLinks.",
-                "Designed and architected a YARP-based API gateway for the platform's external APIs, handling "
-                "authentication and rate limiting with Redis distributed locks (Redlock), mutexes, and semaphores.",
+                "Designed and architected a YARP-based API gateway for third-party consumers of the platform's external "
+                "APIs, handling their authentication and rate limiting with Redis distributed locks (Redlock), mutexes, and semaphores.",
                 "Worked on a read path built for scale: Redis distributed caching, read-only database replicas, a "
                 "search-only database, and Elasticsearch.",
                 "Moved long-running and integration-heavy work off the request path using Azure Service Bus, Storage "
