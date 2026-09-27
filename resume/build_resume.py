@@ -50,8 +50,8 @@ SKILLS = [
     ("Architecture", "System design, Clean Architecture, microservices, event-driven architecture, serverless, "
                      "multi-tenant SaaS, legacy modernization, API design, RBAC, high availability"),
     ("Cloud & DevOps", "Microsoft Azure (Functions, Logic Apps, Service Bus, Event Grid, App Service, Storage, "
-                       "Azure AD), Google Cloud Platform, Docker, Azure DevOps, GitHub Actions, CI/CD, Linux, Nginx"),
-    ("Databases", "SQL Server, PostgreSQL, MySQL, Redis, SQLite, Prisma, query and schema optimization"),
+                       "Azure AD), Google Cloud Platform (Cloud Run functions, Cloud Tasks, Cloud Storage, BigQuery), Docker, Azure DevOps, GitHub Actions, CI/CD, Linux, Nginx"),
+    ("Databases", "SQL Server, PostgreSQL, MySQL, Redis, Elasticsearch, BigQuery, read replicas, query optimization"),
     ("Frontend", "Angular, React, Next.js, TypeScript, Tailwind CSS, PrimeNG, Ag-Grid"),
     ("Security & Integrations", "SAML 2.0 SSO, OAuth 2.0 / OpenID Connect, JWT, AES encryption, Stripe, DocuSign, "
                                 "QuickBooks Online, Braintree, Zendesk, Google Sheets & Drive APIs"),
@@ -73,25 +73,27 @@ EXPERIENCE = [
         "groups": [
             ("ERISApedia - Team Lead", "Nov 2025 - Present", [
                 "Lead a team of 7-8 engineers on the ground-up rewrite of ERISApedia, an ERISA compliance-research "
-                "platform, replacing a legacy PHP application with .NET Core, Angular, and MySQL.",
+                "platform, replacing a legacy PHP application with .NET Core, EF Core, Angular, MySQL, and Redis.",
                 "Team delivered AI Search (Ask ERISA), launched July 2026: LLM-powered answers across nine ERISA "
                 "compliance book titles for advisors, auditors, and TPAs.",
-                "Team built Form 5500 data mining: search across filings and attachments with hundreds of criteria, "
-                "benchmarking, and map-based sales prospecting.",
-                "Own the target architecture, technology selection, and migration path off the legacy system; "
-                "designed the cloud architecture across Microsoft Azure and Google Cloud Platform.",
+                "Team built Form 5500 and DOL data pipelines that scrape and mine public filings on Google Cloud (Cloud Run "
+                "functions, Cloud Tasks, Cloud Storage, BigQuery), searchable on hundreds of criteria with benchmarking.",
+                "Own the target architecture, technology selection, and migration path off the legacy system, and the "
+                "cloud design across Azure and GCP, working with U.S. stakeholders on scope and sequencing.",
                 "Made the new platform faster than the legacy PHP system by rewriting UI components, optimizing "
-                "slow SQL queries, and adding API-layer caching.",
-                "Partner with U.S. stakeholders and engineers on architecture, scope, and sequencing to keep the "
-                "rewrite aligned with product and compliance requirements.",
+                "slow SQL queries, and adding Redis distributed caching at the API layer.",
             ]),
             ("PensionPro - Senior Software Engineer, then Team Lead (2 years)", "Jun 2022 - Nov 2025", [
-                "Delivered features across the full stack (C#, .NET Core, Angular, SQL Server, Redis) of a pension "
-                "administration SaaS used by 400+ TPA firms administering 230,000+ retirement plans.",
+                "Delivered features across the full stack (C#, .NET Core, Angular, SQL Server) of a pension administration "
+                "SaaS used by 400+ TPA firms administering 230,000+ retirement plans, and its companion apps Fetch and "
+                "PlanSponsorLinks.",
+                "Worked on a read path built for scale: Redis distributed caching, read-only database replicas, a "
+                "search-only database, and Elasticsearch.",
                 "Moved long-running and integration-heavy work off the request path using Azure Service Bus, Storage "
                 "queues and tables, Azure Functions (all trigger types), Logic Apps, and Event Grid, so background "
                 "processing scales independently of user traffic.",
-                "Integrated DocuSign, Zendesk, ftwilliam.com, QuickBooks Online, and Braintree; implemented SAML 2.0 "
+                "Integrated ERISApedia, ftwilliam.com, DocuSign, and Form 5500 data, plus Zendesk, QuickBooks Online, and "
+                "Braintree; implemented SAML 2.0 "
                 "single sign-on and identity management.",
                 "Established the CI/CD and release strategy on Azure DevOps: build and release pipelines, environment "
                 "promotion, and deployment gates, supporting production releases every 2 to 4 weeks.",
@@ -142,7 +144,8 @@ EXPERIENCE = [
 
 PROJECTS = [
     ("ForecastPro - Multi-tenant forecasting & AI reporting SaaS", "Sole engineer, in production", [
-        "In production with a few large retail pharmacy chains in India: syncs their ERP data, forecasts demand, "
+        "In production with a few large retail pharmacy chains in India: syncs their ERP data through a resumable "
+        "pipeline, forecasts demand, "
         "and answers business questions asked in plain English.",
         "Built a natural-language reporting (NLQ) engine: an LLM maps questions to a catalog-constrained semantic "
         "query that is compiled to parameterized SQL with tenant and branch row-level security and SQL safety "
@@ -151,7 +154,6 @@ PROJECTS = [
         "anomalies, business health score), Redis-cached dashboards, and scheduled generation.",
         "Built prepaid AI credit billing: append-only ledger enforced by database triggers, reservation-based "
         "charging, per-tenant pricing and spend limits, and signature-verified, idempotent Stripe webhooks.",
-        "Built a resumable ERP data sync pipeline with queue-based, per-tenant worker concurrency.",
     ]),
     ("SastoRent - Rental and services marketplace", "Freelance, lead engineer", [
         "Built a marketplace (sastorent.com) where people rent out properties and everyday items, and where "
